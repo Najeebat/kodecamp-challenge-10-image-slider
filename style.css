@@ -1,0 +1,80 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url('./img/image-J.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.slider{
+    height: 100vh;
+    margin: auto;
+    position: relative;
+    width: 90%;
+    display: grid;
+    place-items: center;
+
+}
+
+.slide-track{
+    display: flex;
+    width: calc(300px * 16);
+    animation: scroll 30s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-300px * 8)); /* Note the negative value */
+    }
+}
+
+
+.slide{
+    height: 300px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    transition: transform 1s;
+    /* perspective: 100%; */
+}
+
+img{
+    width: 100%;
+}
+
+.slide:hover {
+    transform: scale(1.2) translateZ(40px);
+    cursor:pointer;
+}
+
+
+.slider::before,
+.slider::after{
+    /* background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 50% ); */
+    content: '';
+    height:100% ;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
+
+.slider::before{
+    left: 0;
+    top: 0;
+}
+
+.slider::after{
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
